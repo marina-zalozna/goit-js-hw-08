@@ -8,10 +8,11 @@ function whenOn(data) {
 }
 player.on('timeupdate', throttle(whenOn, 1000));
 
-function onPlay(data) {
-  let savedTime = localStorage.getItem('videoplayer-current-time');
-  if (data.seconds !== savedTime) {
-    player.setCurrentTime(savedTime);
-  }
-}
-player.on('play', onPlay);
+// function onPlay(data) {
+//   let savedTime = localStorage.getItem('videoplayer-current-time');
+//   if (data.seconds !== savedTime) {
+//     player.setCurrentTime(savedTime);
+//   }
+// }
+// player.on('play', onPlay);
+player.setCurrentTime(JSON.parse(storage.get('videoplayer-current-time')) || 0);
