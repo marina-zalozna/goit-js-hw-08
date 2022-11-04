@@ -15,4 +15,15 @@ player.on('timeupdate', throttle(whenOn, 1000));
 //   }
 // }
 // player.on('play', onPlay);
-player.setCurrentTime(JSON.parse(storage.get('videoplayer-current-time')) || 0);
+// player.setCurrentTime(JSON.parse(storage.get('videoplayer-current-time')) || 0);
+const onTime = localStorage.getItem('videoplayer-current-time');
+
+    player.setCurrentTime(onTime).then(function(seconds) {
+    }).catch(function(error) {
+        switch (error.name) {
+            case 'RangeError':
+                break;
+            default:
+                break;
+        }
+    });
